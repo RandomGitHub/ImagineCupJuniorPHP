@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Bare - Start Bootstrap Template</title>
+  <title>My Recipe List</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -44,7 +44,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Start Bootstrap</a>
+        <a class="navbar-brand" href="#">My Recipe List</a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -143,15 +143,15 @@
                 $recipeName     = mysqli_real_escape_string($conn, $_POST["txtRecipeName"]);
                 $selRecipeName  = ($_POST["selRecipeName"] == "not") ? "NOT LIKE" : "LIKE";
                 $sqlQuery .= ' WHERE recipes.RecipeName '.$selRecipeName.' "%'.$recipeName.'%"';
-                
+
                 $recipeType     = mysqli_real_escape_string($conn, $_POST["txtRecipeType"]);
                 $selRecipeType  = ($_POST["selRecipeType"] == "not") ? "NOT LIKE" : "LIKE";
                 $sqlQuery .= ' AND recipes.RecipeType '.$selRecipeType.' "%'.$recipeType.'%"';
-                
+
                 $selServes  = ($_POST["selServes"] == "exact") ? "=" : ($_POST["selServes"] == "most") ? "<=" : ">=";
                 $serves     = intval($_POST["numServes"]) > 0 ? intval($_POST["numServes"]): 1;
                 $sqlQuery .= ' AND recipes.Serves '.$selServes.' '.$serves;
-                
+
                 $sqlQuery .= ' ORDER BY recipes.RecipeName ASC;';
 
 
